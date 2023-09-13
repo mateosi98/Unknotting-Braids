@@ -66,7 +66,7 @@ if not os.path.exists(general_dir_name + logs_dir + version_dir):
 epocs = 10
 TIMESTEPS = len(train_set)*epocs
 model_dqn = DQN('MlpPolicy', env, policy_kwargs={'net_arch':[256, 512, 512, 512, 256]}, verbose=1, tensorboard_log=general_dir_name+logs_dir+version_dir, learning_rate=10e-6)
-# model_ppo = PPO.load("/Users/mateosallesize/Documents/SRO/Braids/Unknotting/models/3s_20l/braid_knot_env_rew_0_1/40001102.zip")
+# model_ppo = PPO.load("/Unknotting/models/3s_20l/braid_knot_env_rew_0_1/40001102.zip")
 
 
 for i in range(100): 
@@ -82,7 +82,7 @@ for i in range(100):
 ##########################################################################################
 ##########################################################################################
 
-# model_dqn = DQN.load("/Users/mateosallesize/Documents/SRO/Braids/Unknotting/models/3s_10l/braid_knot_env_rew_0_1/15999774_DQN.zip")
+# model_dqn = DQN.load("/Unknotting/models/3s_10l/braid_knot_env_rew_0_1/15999774_DQN.zip")
 model_ppo = PPO.load("/Unknotting/models/3s_20l/braid_knot_env_rew_0_1/40001102.zip")
 s, l = 3,20
 data_dir = f"/data/"
