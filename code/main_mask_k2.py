@@ -66,7 +66,7 @@ epocs = 10
 TIMESTEPS = len(train_set)*epocs
 model_mppo = MaskablePPO(MaskableActorCriticPolicy, env,policy_kwargs={'net_arch':[256, 512, 512, 512, 256]},tensorboard_log=general_dir_name+logs_dir+version_dir, learning_rate=10e-6, verbose=1)
 # model_dqn = DQN('MlpPolicy', env, policy_kwargs={'net_arch':[256, 512, 512, 512, 256]}, verbose=1, tensorboard_log=general_dir_name+logs_dir+version_dir, learning_rate=10e-6)
-# model_ppo = PPO.load("/Users/mateosallesize/Documents/SRO/Braids/Unknotting/models/3s_20l/braid_knot_env_rew_0_1/40001102.zip")
+# model_ppo = PPO.load("/Unknotting/models/3s_20l/braid_knot_env_rew_0_1/40001102.zip")
 
 
 for i in range(100): 
@@ -77,7 +77,7 @@ for i in range(100):
     # model_ppo_e1.learn(total_timesteps=TIMESTEPS, progress_bar=True,tb_log_name='PPO', reset_num_timesteps=False, log_interval=1)
     # model_ppo_e1.save(f"{general_dir_name+models_dir+version_dir_e1}/{model_ppo_e1._total_timesteps}")
     
-# tensorboard --logdir /Users/mateosallesize/Documents/SRO/Braids/Unknotting/logs/3s_10l/braid_knot_env_mask_rew_0_1_limexp_u/M_PPO_k2_0
+# tensorboard --logdir /Unknotting/logs/3s_10l/braid_knot_env_mask_rew_0_1_limexp_u/M_PPO_k2_0
 
 
 ########################################################################################################
@@ -85,9 +85,9 @@ for i in range(100):
 ########################################################################################################
 
 
-# model_dqn = DQN.load("/Users/mateosallesize/Documents/SRO/Braids/Unknotting/models/3s_10l/braid_knot_env_rew_0_1/15999774_DQN.zip")
-model_mppo = MaskablePPO.load("/Users/mateosallesize/Documents/SRO/Braids/Unknotting/models/3s_10l/braid_knot_env_mask_rew_0_1_limexp_u/68124640.zip")
-# model_ppo = PPO.load("/Users/mateosallesize/Documents/SRO/Braids/Unknotting/models/3s_10l/braid_knot_env_rew_0_1/32013410.zip")
+# model_dqn = DQN.load("/Unknotting/models/3s_10l/braid_knot_env_rew_0_1/15999774_DQN.zip")
+model_mppo = MaskablePPO.load("/Unknotting/models/3s_10l/braid_knot_env_mask_rew_0_1_limexp_u/68124640.zip")
+# model_ppo = PPO.load("/Unknotting/models/3s_10l/braid_knot_env_rew_0_1/32013410.zip")
 s, l = 3,10
 data_dir = f"/data/"
 file_dir = f"pure_{s}s_{l}l"
@@ -144,9 +144,9 @@ results_df.to_csv(general_dir_name+data_dir+file_dir+'_results.csv')
 #######
 
 
-model_dqn = DQN.load("/Users/mateosallesize/Documents/SRO/Braids/Unknotting/models/3s_10l/braid_knot_env_rew_0_1/15999774_DQN.zip")
-model_mppo = MaskablePPO.load("/Users/mateosallesize/Documents/SRO/Braids/Unknotting/models/3s_10l/sb3_contrib.common.wrappers.action_masker/22008930.zip")
-model_ppo = PPO.load("/Users/mateosallesize/Documents/SRO/Braids/Unknotting/models/3s_10l/braid_knot_env_rew_0_1/32013410.zip")
+model_dqn = DQN.load("/Unknotting/models/3s_10l/braid_knot_env_rew_0_1/15999774_DQN.zip")
+model_mppo = MaskablePPO.load("/Unknotting/models/3s_10l/sb3_contrib.common.wrappers.action_masker/22008930.zip")
+model_ppo = PPO.load("/Unknotting/models/3s_10l/braid_knot_env_rew_0_1/32013410.zip")
 s, l = 3,10
 data_dir = f"/data/"
 file_dir = f"pure_{s}s_{l}l"
