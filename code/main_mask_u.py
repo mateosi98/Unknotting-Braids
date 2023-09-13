@@ -86,7 +86,7 @@ for i in range(100):
 
 
 # model_dqn = DQN.load("/Users/mateosallesize/Documents/SRO/Braids/Unknotting/models/3s_10l/braid_knot_env_rew_0_1/15999774_DQN.zip")
-model_mppo = MaskablePPO.load("/Users/mateosallesize/Documents/SRO/Braids/Unknotting/models/3s_10l/braid_knot_env_mask_rew_0_1_limexp_u/68124640.zip")
+model_mppo = MaskablePPO.load("/Unknotting/models/3s_10l/braid_knot_env_mask_rew_0_1_limexp_u/68124640.zip")
 # model_ppo = PPO.load("/Users/mateosallesize/Documents/SRO/Braids/Unknotting/models/3s_10l/braid_knot_env_rew_0_1/32013410.zip")
 s, l = 3,10
 data_dir = f"/data/"
@@ -148,9 +148,9 @@ for i in range(m - 1, -1, -1):
 #######
 
 
-model_dqn = DQN.load("/Users/mateosallesize/Documents/SRO/Braids/Unknotting/models/3s_10l/braid_knot_env_rew_0_1/15999774_DQN.zip")
-model_mppo = MaskablePPO.load("/Users/mateosallesize/Documents/SRO/Braids/Unknotting/models/3s_10l/sb3_contrib.common.wrappers.action_masker/22008930.zip")
-model_ppo = PPO.load("/Users/mateosallesize/Documents/SRO/Braids/Unknotting/models/3s_10l/braid_knot_env_rew_0_1/32013410.zip")
+model_dqn = DQN.load("/Unknotting/models/3s_10l/braid_knot_env_rew_0_1/15999774_DQN.zip")
+model_mppo = MaskablePPO.load("/Unknotting/models/3s_10l/sb3_contrib.common.wrappers.action_masker/22008930.zip")
+model_ppo = PPO.load("/Unknotting/models/3s_10l/braid_knot_env_rew_0_1/32013410.zip")
 s, l = 3,10
 data_dir = f"/data/"
 file_dir = f"pure_{s}s_{l}l"
