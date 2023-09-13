@@ -4,8 +4,8 @@ import pandas as pd
 import numpy as np
 from random import shuffle
 import kitty_lacey
-general_dir_name = '/Users/mateosallesize/Documents/SRO/Braids/Unknotting'
-dir_name = '/Users/mateosallesize/Documents/SRO/Braids/Unknotting'
+general_dir_name = ''
+dir_name = ''
 code_dir = f"/code"
 sys.path.insert(0, dir_name+code_dir)
 
@@ -119,11 +119,11 @@ import braid_knot_env_mask_rew_0_1
 reload(braid_knot_env_mask_rew_0_1)
 from braid_knot_env_mask_rew_0_1 import BraidKnotEnv
 
-model_dqn = DQN.load("/Users/mateosallesize/Documents/SRO/Braids/Unknotting/models/3s_10l/braid_knot_env_rew_0_1/15999774_DQN.zip")
-model_mppo = MaskablePPO.load("/Users/mateosallesize/Documents/SRO/Braids/Unknotting/models/3s_10l/sb3_contrib.common.wrappers.action_masker/22008930.zip")
-model_mppo_u = MaskablePPO.load("/Users/mateosallesize/Documents/SRO/Braids/Unknotting/models/3s_10l/braid_knot_env_mask_rew_0_1_limexp_u/32440288.zip")
-model_mppo_k2 = MaskablePPO.load("/Users/mateosallesize/Documents/SRO/Braids/Unknotting/models/3s_10l/braid_knot_env_mask_rew_0_1_limexp_u/k2/32440288.zip")
-model_ppo = PPO.load("/Users/mateosallesize/Documents/SRO/Braids/Unknotting/models/3s_10l/braid_knot_env_rew_0_1/32013410.zip")
+model_dqn = DQN.load("/Unknotting/models/3s_10l/braid_knot_env_rew_0_1/15999774_DQN.zip")
+model_mppo = MaskablePPO.load("/Unknotting/models/3s_10l/sb3_contrib.common.wrappers.action_masker/22008930.zip")
+model_mppo_u = MaskablePPO.load("/Unknotting/models/3s_10l/braid_knot_env_mask_rew_0_1_limexp_u/32440288.zip")
+model_mppo_k2 = MaskablePPO.load("/Unknotting/models/3s_10l/braid_knot_env_mask_rew_0_1_limexp_u/k2/32440288.zip")
+model_ppo = PPO.load("/Unknotting/models/3s_10l/braid_knot_env_rew_0_1/32013410.zip")
 s, l = 3,10
 data_dir = f"/data/"
 file_dir = f"pure_{s}s_{l}l"
