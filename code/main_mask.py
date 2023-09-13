@@ -62,7 +62,7 @@ epocs = 10
 TIMESTEPS = len(train_set)*epocs
 model_mppo = MaskablePPO(MaskableActorCriticPolicy, env,policy_kwargs={'net_arch':[256, 512, 512, 512, 256]},tensorboard_log=general_dir_name+logs_dir+version_dir, learning_rate=10e-6, verbose=1)
 # model_dqn = DQN('MlpPolicy', env, policy_kwargs={'net_arch':[256, 512, 512, 512, 256]}, verbose=1, tensorboard_log=general_dir_name+logs_dir+version_dir, learning_rate=10e-6)
-# model_ppo = PPO.load("/Users/mateosallesize/Documents/SRO/Braids/Unknotting/models/3s_20l/braid_knot_env_rew_0_1/40001102.zip")
+# model_ppo = PPO.load("/Unknotting/models/3s_20l/braid_knot_env_rew_0_1/40001102.zip")
 
 for i in range(100): 
     model_mppo.learn(total_timesteps=TIMESTEPS, progress_bar=True,tb_log_name='M_PPO', reset_num_timesteps=False, log_interval=1)
@@ -73,7 +73,7 @@ for i in range(100):
     # model_dqn.save(f"{general_dir_name+models_dir+version_dir}/{model_dqn._total_timesteps}_DQN")
 
 
-# tensorboard --logdir /Users/mateosallesize/Documents/SRO/Braids/Unknotting/logs/3s_10l/braid_knot_env_mask/M_PPO_0
+# tensorboard --logdir /Unknotting/logs/3s_10l/braid_knot_env_mask/M_PPO_0
 
 ##########################################################################################
 ##########################################################################################
@@ -82,8 +82,8 @@ for i in range(100):
 ##########################################################################################
 
 
-# model_dqn = DQN.load("/Users/mateosallesize/Documents/SRO/Braids/Unknotting/models/3s_10l/braid_knot_env_rew_0_1/15999774_DQN.zip")
-model_ppo = MaskablePPO.load("/Users/mateosallesize/Documents/SRO/Braids/Unknotting/models/3s_20l/sb3_contrib.common.wrappers.action_masker/100003386.zip")
+# model_dqn = DQN.load("/Unknotting/models/3s_10l/braid_knot_env_rew_0_1/15999774_DQN.zip")
+model_ppo = MaskablePPO.load("/Unknotting/models/3s_20l/sb3_contrib.common.wrappers.action_masker/100003386.zip")
 s, l = 3,20
 data_dir = f"/data/"
 file_dir = f"pure_{s}s_{l}l"
