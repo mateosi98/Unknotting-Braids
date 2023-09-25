@@ -191,11 +191,11 @@ df_results_detail.to_csv(general_dir_name+data_dir+file_dir+'_results_detailed.c
 #### Environments (with MPPO)
 ##########################################################################################
 
-model_mppo = MaskablePPO.load("/Users/mateosallesize/Documents/SRO/Braids/Unknotting/models/3s_10l/braid_knot_env_mask/32440288.zip")
-model_mppo_0_1 = MaskablePPO.load("/Users/mateosallesize/Documents/SRO/Braids/Unknotting/models/3s_10l/braid_knot_env_mask_rew_0_1/30012524.zip")
-model_mppo_0_1_le = MaskablePPO.load("/Users/mateosallesize/Documents/SRO/Braids/Unknotting/models/3s_10l/braid_knot_env_mask_rew_0_1_limexp/32013400.zip")
-model_mppo_0_1_le_u = MaskablePPO.load("/Users/mateosallesize/Documents/SRO/Braids/Unknotting/models/3s_10l/braid_knot_env_mask_rew_0_1_limexp_u/32440288.zip")
-model_mppo_0_1_le_k2 = MaskablePPO.load("/Users/mateosallesize/Documents/SRO/Braids/Unknotting/models/3s_10l/braid_knot_env_mask_rew_0_1_limexp_u/k2/32440288.zip")
+model_mppo = MaskablePPO.load("/Unknotting/models/3s_10l/braid_knot_env_mask/32440288.zip")
+model_mppo_0_1 = MaskablePPO.load("/Unknotting/models/3s_10l/braid_knot_env_mask_rew_0_1/30012524.zip")
+model_mppo_0_1_le = MaskablePPO.load("/Unknotting/models/3s_10l/braid_knot_env_mask_rew_0_1_limexp/32013400.zip")
+model_mppo_0_1_le_u = MaskablePPO.load("/Unknotting/models/3s_10l/braid_knot_env_mask_rew_0_1_limexp_u/32440288.zip")
+model_mppo_0_1_le_k2 = MaskablePPO.load("/Unknotting/models/3s_10l/braid_knot_env_mask_rew_0_1_limexp_u/k2/32440288.zip")
 
 
 
@@ -330,7 +330,7 @@ import braid_knot_env_mask_rew_0_1_limexp_u_hard
 reload(braid_knot_env_mask_rew_0_1_limexp_u_hard)
 from braid_knot_env_mask_rew_0_1_limexp_u_hard import BraidKnotEnv
 
-model_mppo = MaskablePPO.load("/Users/mateosallesize/Documents/SRO/Braids/Unknotting/models/3s_20l/braid_knot_env_mask_rew_0_1_limexp_u_hard/66354215.zip")
+model_mppo = MaskablePPO.load("/Unknotting/models/3s_20l/braid_knot_env_mask_rew_0_1_limexp_u_hard/66354215.zip")
 
 s, l = 3,20
 data_dir = f"/data/"
