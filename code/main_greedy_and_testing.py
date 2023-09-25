@@ -319,3 +319,63 @@ len(results_df[results_df['MaskablePPO_K2'] <=100])/10001
 results_df[results_df['MaskablePPO_K2'] >100]
 
 results_df.to_csv(general_dir_name+data_dir+file_dir+'_results.csv')
+
+
+##########################################################################################
+#### Greedy + MPPO
+##########################################################################################
+
+from importlib import reload
+import braid_knot_env_mask_rew_0_1_limexp_u_hard
+reload(braid_knot_env_mask_rew_0_1_limexp_u_hard)
+from braid_knot_env_mask_rew_0_1_limexp_u_hard import BraidKnotEnv
+
+model_mppo = MaskablePPO.load("/Users/mateosallesize/Documents/SRO/Braids/Unknotting/models/3s_20l/braid_knot_env_mask_rew_0_1_limexp_u_hard/66354215.zip")
+
+s, l = 3,20
+data_dir = f"/data/"
+file_dir = f"pure_{s}s_{l}l"
+try:
+    results_df = pd.read_csv(general_dir_name+data_dir+file_dir+'').drop(['Unnamed: 0'],axis=1)
+    results_df = results_df.loc[:10000]
+    test_set = results_df.iloc[:, :l].values.tolist()
+except:
+    print('NO DATA FOUND')
+env = BraidKnotEnv(braid_set = [l*[0]],braid_strands=s, e = 0, m=l)
+len(test_set)
+
+# When Greedy returns triv = False, we use a series of predictions of MPPO.
+# the variable done tells if MPPO was able to solve it.
+
+def test_greedy_plus_mppo(data=[], model= None, max_steps = l):
+    info_list, index = [], 0
+    for braid in data:
+        # greedy_unknotting(b,0,len(b), 3)[0]
+        result_braid, steps, stack,action_log, triv = greedy_unknotting(braid,0,[],[],len(braid), s)
+        done = False
+        if not triv:
+            env.reset(np.array(braid))
+            while not done and steps < max_steps:
+                pred_action = int(model.predict(env.state)[0])
+                state, reward, _, info = env.step(pred_action)
+                result_braid = np.copy(state)
+                steps += 1
+                done = reward == 1
+            if not done:
+                steps = max_steps
+        info_list.append([index,triv,done,steps])
+        index += 1
+        print(index)
+    return info_list
+
+# Comparison between Greedy and Greedy + MPPO
+# There is a +2.26% of unknotted braids using Greedy + MPPO.
+
+lst_greedy = test_greedy(data = test_set)
+df_greedy = pd.DataFrame(lst_greedy, columns= ['index','triv','steps'])
+lst = test_greedy_plus_mppo(data = test_set, model = model_mppo)
+df = pd.DataFrame(lst, columns= ['index','triv','done','steps'])
+df[df["triv"] == True].describe()
+df_greedy[df_greedy["triv"] == True].describe()
+df[df["done"] == True].describe()
+df[df["triv"] == False][df["done"] == False].describe()
