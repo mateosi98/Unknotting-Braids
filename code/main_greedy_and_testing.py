@@ -355,14 +355,16 @@ def test_greedy_plus_mppo(data=[], model= None, max_steps = l):
         done = False
         if not triv:
             env.reset(np.array(braid))
+            steps = 0
             while not done and steps < max_steps:
                 pred_action = int(model.predict(env.state)[0])
                 state, reward, _, info = env.step(pred_action)
-                result_braid = np.copy(state)
                 steps += 1
                 done = reward == 1
+                triv = reward == 1
             if not done:
                 steps = max_steps
+                triv = False
         info_list.append([index,triv,done,steps])
         index += 1
         print(index)
@@ -373,9 +375,11 @@ def test_greedy_plus_mppo(data=[], model= None, max_steps = l):
 
 lst_greedy = test_greedy(data = test_set)
 df_greedy = pd.DataFrame(lst_greedy, columns= ['index','triv','steps'])
+df_greedy[df_greedy["triv"] == True].describe()
+
 lst = test_greedy_plus_mppo(data = test_set, model = model_mppo)
 df = pd.DataFrame(lst, columns= ['index','triv','done','steps'])
 df[df["triv"] == True].describe()
-df_greedy[df_greedy["triv"] == True].describe()
 df[df["done"] == True].describe()
 df[df["triv"] == False][df["done"] == False].describe()
+
